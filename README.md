@@ -2,6 +2,81 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
+	ng new ag-angular-grid-sample --skip-tests
+	cd ag-angular-grid-sample
+	npm i ag-grid --save
+	npm i ag-grid-angular --save
+	ng generate component my-grid-application
+
+// src/app/app.component.html
+<app-my-grid-application></app-my-grid-application>
+
+// src/app/my-grid-application/my-grid-application.component.ts
+import {Component} from "@angular/core";
+import {GridOptions} from "ag-grid";
+
+@Component({
+    selector: 'app-my-grid-application',
+    templateUrl: './my-grid-application.component.html'
+})
+export class MyGridApplicationComponent {
+    private gridOptions: GridOptions;
+
+    constructor() {
+        this.gridOptions = {};
+        this.gridOptions.columnDefs = [
+            {
+                headerName: "ID",
+                field: "id",
+                width: 100
+            },
+            {
+                headerName: "Value",
+                field: "value",
+                width: 100
+            },
+        ];
+        this.gridOptions.rowData = [
+            {id: 5, value: 10},
+            {id: 10, value: 15},
+            {id: 15, value: 20}
+        ]
+    }
+}
+
+// src/app/my-grid-application/my-grid-application.component.html
+<div style="width: 200px;">
+    <ag-grid-angular #agGrid style="width: 100%; height: 200px;" class="ag-fresh"
+                 [gridOptions]="gridOptions">
+    </ag-grid-angular>
+</div>
+
+// src/app/app.module.ts
+import {BrowserModule} from "@angular/platform-browser";
+import {NgModule} from "@angular/core";
+import {AgGridModule} from "ag-grid-angular/main";
+
+import {AppComponent} from "./app.component";
+import {MyGridApplicationComponent} from "./my-grid-application/my-grid-application.component";
+
+@NgModule({
+    declarations: [
+        AppComponent,
+        MyGridApplicationComponent
+    ],
+    imports: [
+        BrowserModule,
+        AgGridModule.withComponents([])
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
+})
+export class AppModule {}
+
+//style.css
+@import "../node_modules/ag-grid/dist/styles/ag-grid.css";
+@import "../node_modules/ag-grid/dist/styles/theme-fresh.css";
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
