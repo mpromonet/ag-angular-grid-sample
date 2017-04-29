@@ -13,7 +13,8 @@ export class MyGridApplicationComponent {
         this.mygridOptions = {
 		enableFilter: true,
 		enableSorting: true,
-		enableColResize: true
+		enableColResize: true,
+		onGridReady: function($event) { $event.api.sizeColumnsToFit(); }
 	};
         this.mygridOptions.columnDefs = [
             {
