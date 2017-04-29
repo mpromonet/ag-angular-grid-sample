@@ -5,24 +5,28 @@ import {GridOptions} from "ag-grid";
     selector: 'app-my-grid-application',
     templateUrl: './my-grid-application.component.html'
 })
+
 export class MyGridApplicationComponent {
-    private gridOptions: GridOptions;
+    public mygridOptions: GridOptions;
 
     constructor() {
-        this.gridOptions = {};
-        this.gridOptions.columnDefs = [
+        this.mygridOptions = {
+		enableFilter: true,
+		enableSorting: true,
+		enableColResize: true
+	};
+        this.mygridOptions.columnDefs = [
             {
                 headerName: "ID",
-                field: "id",
-                width: 100
+                field: "id"
             },
             {
                 headerName: "Value",
                 field: "value",
-                width: 100
-            },
+		editable: true
+            }
         ];
-        this.gridOptions.rowData = [
+        this.mygridOptions.rowData = [
             {id: 5, value: 10},
             {id: 10, value: 15},
             {id: 15, value: 20}
