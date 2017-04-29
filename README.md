@@ -2,6 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
+This is a try to simplify the sample from https://www.ag-grid.com/best-angular-2-data-grid/?framework=all#gsc.tab=0
+
+
 	ng new ag-angular-grid-sample --skip-tests
 	cd ag-angular-grid-sample
 	npm i ag-grid --save
