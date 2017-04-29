@@ -8,74 +8,79 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 	npm i ag-grid-angular --save
 	ng generate component my-grid-application
 
-// src/app/app.component.html
-<app-my-grid-application></app-my-grid-application>
+* src/app/app.component.html
 
-// src/app/my-grid-application/my-grid-application.component.ts
-import {Component} from "@angular/core";
-import {GridOptions} from "ag-grid";
+      <app-my-grid-application></app-my-grid-application>
 
-@Component({
-    selector: 'app-my-grid-application',
-    templateUrl: './my-grid-application.component.html'
-})
-export class MyGridApplicationComponent {
-    private gridOptions: GridOptions;
+* src/app/my-grid-application/my-grid-application.component.ts
 
-    constructor() {
-        this.gridOptions = {};
-        this.gridOptions.columnDefs = [
-            {
-                headerName: "ID",
-                field: "id",
-                width: 100
-            },
-            {
-                headerName: "Value",
-                field: "value",
-                width: 100
-            },
-        ];
-        this.gridOptions.rowData = [
-            {id: 5, value: 10},
-            {id: 10, value: 15},
-            {id: 15, value: 20}
-        ]
-    }
-}
+      import {Component} from "@angular/core";
+      import {GridOptions} from "ag-grid";
 
-// src/app/my-grid-application/my-grid-application.component.html
-<div style="width: 200px;">
-    <ag-grid-angular #agGrid style="width: 100%; height: 200px;" class="ag-fresh"
-                 [gridOptions]="gridOptions">
-    </ag-grid-angular>
-</div>
+      @Component({
+          selector: 'app-my-grid-application',
+          templateUrl: './my-grid-application.component.html'
+      })
+      export class MyGridApplicationComponent {
+          private gridOptions: GridOptions;
 
-// src/app/app.module.ts
-import {BrowserModule} from "@angular/platform-browser";
-import {NgModule} from "@angular/core";
-import {AgGridModule} from "ag-grid-angular/main";
+          constructor() {
+              this.gridOptions = {};
+              this.gridOptions.columnDefs = [
+                  {
+                      headerName: "ID",
+                      field: "id",
+                      width: 100
+                  },
+                  {
+                      headerName: "Value",
+                      field: "value",
+                      width: 100
+                  },
+              ];
+              this.gridOptions.rowData = [
+                  {id: 5, value: 10},
+                  {id: 10, value: 15},
+                  {id: 15, value: 20}
+              ]
+          }
+      }
 
-import {AppComponent} from "./app.component";
-import {MyGridApplicationComponent} from "./my-grid-application/my-grid-application.component";
+* src/app/my-grid-application/my-grid-application.component.html
 
-@NgModule({
-    declarations: [
-        AppComponent,
-        MyGridApplicationComponent
-    ],
-    imports: [
-        BrowserModule,
-        AgGridModule.withComponents([])
-    ],
-    providers: [],
-    bootstrap: [AppComponent]
-})
-export class AppModule {}
+      <div style="width: 200px;">
+          <ag-grid-angular #agGrid style="width: 100%; height: 200px;" class="ag-fresh"
+                       [gridOptions]="gridOptions">
+          </ag-grid-angular>
+      </div>
 
-//style.css
-@import "../node_modules/ag-grid/dist/styles/ag-grid.css";
-@import "../node_modules/ag-grid/dist/styles/theme-fresh.css";
+* src/app/app.module.ts
+
+      import {BrowserModule} from "@angular/platform-browser";
+      import {NgModule} from "@angular/core";
+      import {AgGridModule} from "ag-grid-angular/main";
+
+      import {AppComponent} from "./app.component";
+      import {MyGridApplicationComponent} from "./my-grid-application/my-grid-application.component";
+
+      @NgModule({
+          declarations: [
+              AppComponent,
+              MyGridApplicationComponent
+          ],
+          imports: [
+              BrowserModule,
+              AgGridModule.withComponents([])
+          ],
+          providers: [],
+          bootstrap: [AppComponent]
+      })
+      export class AppModule {}
+
+* style.css
+
+      @import "../node_modules/ag-grid/dist/styles/ag-grid.css";
+      @import "../node_modules/ag-grid/dist/styles/theme-fresh.css";
 
 ## Development server
 
